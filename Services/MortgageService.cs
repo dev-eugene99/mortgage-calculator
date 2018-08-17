@@ -24,7 +24,10 @@ namespace MortgageCalculator.Services
                     wordsList.Add(w);
             }
 
-            var data = new MortgageData();
+            decimal amount = 0;
+            float interest = 0;
+            decimal downPayment = 0;
+            int term = 0;
 
             for (int i = 0; i < wordsList.Count; i = i + 2)
             {
@@ -32,28 +35,23 @@ namespace MortgageCalculator.Services
                 switch (keyword)
                 {
                     case "amount":
-                        var amountString = wordsList[i + 1];
-                        data.Amount = ParseDecimal(amountString);
+                        amount = ParseDecimal(wordsList[i + 1]);
                         break;
                     case "interest":
-                        var interestString = wordsList[i + 1];
-                        data.Interest = ParsePercentage(interestString);
+                        interest = ParsePercentage(wordsList[i + 1]);
                         break;
                     case "downpayment":
-                        var downpaymentString = wordsList[i + 1];
-                        data.DownPayment = ParseDecimal(downpaymentString);
+                        downPayment = ParseDecimal(wordsList[i + 1]);
                         break;
                     case "term":
-                        var termString = wordsList[i + 1];
-                        data.Term = int.Parse(termString);
+                        term = int.Parse(wordsList[i + 1]);
                         break;
                     default:
                         throw new ArgumentException();
                 }
             }
             
-            //fill in the blank
-            return data;
+            return new MortgageData(amount, interest, downPayment, term);
         }
 
         public MortgageSummaryDTO ComputeMortgage(MortgageData data)

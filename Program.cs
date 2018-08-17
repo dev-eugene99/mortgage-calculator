@@ -22,7 +22,7 @@ namespace MortgageCalculator
         {
             if (args.Length == 0)
             {
-                Console.WriteLine(ErrorMsg);
+                ReportError();
                 return;
             }
 
@@ -37,7 +37,7 @@ namespace MortgageCalculator
 
             if (inputSB.Length == 0)
             {
-                Console.WriteLine(ErrorMsg);
+                ReportError();
                 return;
             }
 
@@ -49,8 +49,7 @@ namespace MortgageCalculator
             }
             catch (Exception)
             {
-                Console.WriteLine(ErrorMsg);
-                return;
+                ReportError();
             }
         }
 

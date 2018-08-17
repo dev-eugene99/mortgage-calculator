@@ -10,6 +10,8 @@ term: 30
 ```
 NOTE: the last line of input is a blank line.
 The term is given in years.  The interest can be given a percentage or a digit.
+The downpayment or the amount can be represented in US money standard, i.e. $125,000.00
+The 4 fields can be in any order.
 
 it will return a JSON string as output in the console, such as:
 ```
@@ -26,3 +28,8 @@ it will return a JSON string as output in the console, such as:
 2. open command line or powershell and navigate to the folder this project resides in.
 3. This program takes a file name as a parameter.  
 4. example: `dotnet run loan1.txt`.
+
+## Future potential features:
+
+- Process multiple mortgage calculations in one batch.
+- Allow user to specify file name to write the json output into.
