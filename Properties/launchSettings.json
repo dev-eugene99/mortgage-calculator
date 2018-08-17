@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MortgageCalculator": {
+      "commandName": "Project",
+      "commandLineArgs": "loan1.txt"
+    }
+  }
+}
