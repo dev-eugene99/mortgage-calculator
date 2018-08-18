@@ -25,9 +25,16 @@ it will return a JSON string as output in the console, such as:
 ## How to run:
 
 1. Install [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) or later:
-2. open command line or powershell and navigate to the folder this project resides in.
+2. open command line or powershell and navigate into `MortgageCalculator` project.
 3. This program takes a file name as a parameter.  
 4. example: `dotnet run loan1.txt`.
+
+## How to test:
+
+1. open command line or powershell and navigate into `MortgageCalculator.Tests` project.
+2. execute `dotnet test` to run all tests.
+3. for only unit tests, execute `dotnet test --filter Category=unit`
+3. for only integration tests, execute `dotnet test --filter Category=integration`
 
 ## Future potential features:
 
