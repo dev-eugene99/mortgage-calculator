@@ -6,6 +6,6 @@ solution: MortgageCalculator.sln
 install:
 - dotnet restore
 
-scripts:
+script:
 - dotnet build
 - dotnet test MortgageCalculator.Tests --filter Category=integration
