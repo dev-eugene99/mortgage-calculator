@@ -2,19 +2,40 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 
 namespace MortgageCalculator.Services
 {
     public class MortgageService
     {
+        public string ProcessMortgageFile(string fileName)
+        {
+            StringBuilder inputSB = ReadFileIntoStringBuilder(fileName);
+            return CalculateMortgage(inputSB.ToString().Trim());
+        }
+
+        public StringBuilder ReadFileIntoStringBuilder(string fileName)
+        {
+            var inputSB = new StringBuilder();
+            string[] lines = System.IO.File.ReadAllLines(fileName);
+
+            foreach (var line in lines)
+                inputSB.Append($"{line.Trim().ToLower()} ");
+
+            if (inputSB.Length == 0)
+                throw new ArgumentException();
+
+            return inputSB;
+        }
+
         public string CalculateMortgage(string unformattedInput)
         {
-            var data = extractMortgageData(unformattedInput);
-            var summary = ComputeMortgage(data);
+            MortgageData data = ExtractMortgageData(unformattedInput);
+            MortgageSummaryDTO summary = PrepareDataForOutput(data);
             return summary.toJSONString();
         }
 
-        public MortgageData extractMortgageData(string unformattedInput)
+        public MortgageData ExtractMortgageData(string unformattedInput)
         {
             var words = unformattedInput.Split(' ', ':');
             List<string> wordsList = new List<string>();
@@ -54,15 +75,14 @@ namespace MortgageCalculator.Services
             return new MortgageData(amount, interest, downPayment, term);
         }
 
-        public MortgageSummaryDTO ComputeMortgage(MortgageData data)
+        public MortgageSummaryDTO PrepareDataForOutput(MortgageData data)
         {            
 
             var summary = new MortgageSummaryDTO(
                 data.MonthlyPayment,
-                data.TotalPayment,
-                data.TotalInterest
+                data.TotalInterest,
+                data.TotalPayment
                 );
-            //fill in the blank
             return summary;
         }
 

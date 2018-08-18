@@ -6,14 +6,14 @@
         public decimal TotalPayment { get; set; }
         public decimal TotalInterest { get; set; }
 
-        public MortgageSummaryDTO(decimal monthlyPayment, decimal totalPayment, decimal totalInterest)
+        public MortgageSummaryDTO(decimal monthlyPayment, decimal totalInterest, decimal totalPayment)
         {
             MonthlyPayment = monthlyPayment;
             TotalInterest = totalInterest;
             TotalPayment = totalPayment;
         }
 
-        internal string toJSONString()
+        public string toJSONString()
         {
             return $"{{ \"monthly payment\":{MonthlyPayment:0.##}, \"total interest\":{TotalInterest:0.##}, \"total payment\":{TotalPayment:0.##} }}";
         }

@@ -13,7 +13,6 @@ namespace MortgageCalculator.Models
         public float MonthlyInterest => Interest / 12;
         public int MonthsOfPayments => Term * 12;
 
-        // P = L[c(1 + c)^n] / [(1 + c)^n - 1]
         private decimal _monthlyPayment;
         public decimal MonthlyPayment
         {
@@ -21,14 +20,25 @@ namespace MortgageCalculator.Models
             {
                 if (_monthlyPayment == 0)
                 {
-                    _monthlyPayment = Math.Round(
-                        ((Loan * (decimal)(MonthlyInterest * Math.Pow(1 + MonthlyInterest, MonthsOfPayments)))
-                        / (decimal)(Math.Pow(1 + MonthlyInterest, MonthsOfPayments) - 1)), 2
-                          );
+                    if (MonthlyInterest == 0)
+                    {
+                        _monthlyPayment = Loan / MonthsOfPayments;
+                    }
+                    else
+                    {
+                        // P = L[c(1 + c)^n] / [(1 + c)^n - 1]
+                        _monthlyPayment = Math.Round(
+                            ((Loan * (decimal)(MonthlyInterest * Math.Pow(1 + MonthlyInterest, MonthsOfPayments)))
+                            / (decimal)(Math.Pow(1 + MonthlyInterest, MonthsOfPayments) - 1)), 2
+                              );
+                    }
                 }
                 return _monthlyPayment;
             }
         }
+
+        public decimal TotalPayment => MonthlyPayment * MonthsOfPayments;
+        public decimal TotalInterest => TotalPayment - Loan;
 
         public MortgageData(decimal amount, float interest, decimal downPayment, int term)
         {
@@ -38,8 +48,5 @@ namespace MortgageCalculator.Models
             Term = term;
             _monthlyPayment = 0;
         }
-
-        public decimal TotalPayment => MonthlyPayment * MonthsOfPayments;
-        public decimal TotalInterest => TotalPayment - Loan;
     }
 }
