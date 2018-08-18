@@ -1,0 +1,11 @@
+language: csharp
+dotnet: 2.1
+mono: none
+solution: MortgageCalculator.sln
+
+install:
+- dotnet restore
+
+scripts:
+- dotnet build
+- dotnet test MortgageCalculator.Tests --filter Category=integration
