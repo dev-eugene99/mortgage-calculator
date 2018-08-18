@@ -1,0 +1,4 @@
+﻿amounT : 200000
+interest: 3%
+downPayment: 20000
+term:15

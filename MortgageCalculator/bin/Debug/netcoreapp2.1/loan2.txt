@@ -1,0 +1,5 @@
+﻿
+interest: 0.06
+amounT : $800000
+downPayment: $200,000.00
+term:30
