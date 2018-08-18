@@ -17,8 +17,8 @@ it will return a JSON string as output in the console, such as:
 ```
 {
     "monthly payment": 454.23,
-    "total interest": 83523.23
-    "total payment" 163523.23
+    "total interest": 83522.8
+    "total payment" 163522.8
 }
 ```
 
