@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MortgageCalculator\MortgageCalculator.csproj" />
+    <ProjectReference Include="..\MortgageCalculator.Core\MortgageCalculator.Core.csproj" />
   </ItemGroup>
 
 </Project>

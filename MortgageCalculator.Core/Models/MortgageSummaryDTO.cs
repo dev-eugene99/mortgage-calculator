@@ -1,4 +1,4 @@
-﻿namespace MortgageCalculator.Models
+﻿namespace MortgageCalculator.Core.Models
 {
     public class MortgageSummaryDTO
     {

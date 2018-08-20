@@ -1,5 +1,5 @@
-﻿using MortgageCalculator.Models;
-using MortgageCalculator.Services;
+﻿using MortgageCalculator.Core.Models;
+using MortgageCalculator.Core.Services;
 using System;
 using Xunit;
 
@@ -92,17 +92,17 @@ namespace MortgageCalculator.Tests
 
         [Fact]
         [Trait("Category", "Integration")]
-        public void GenerateMortgageSummaryDTO()
+        public void GenerateJSONMortgageFileFromValidData()
         {
-            var input = new MortgageData(10000m, 0.035f, 1000m, 15);
-            var expected = new MortgageSummaryDTO(input.MonthlyPayment, input.TotalInterest, input.TotalPayment);
+            var amount = 100000m;
+            var interest = 0.055f;
+            var downPayment = 20000m;
+            var term = 30;
+            var expected = "{ \"monthly payment\":454.23, \"total interest\":83522.8, \"total payment\":163522.8 }";
 
-            var output = _mortgageService.PrepareDataForOutput(input);
+            var output = _mortgageService.CalculateMortgageFromData(amount, interest, downPayment, term);
 
-            Assert.IsType<MortgageSummaryDTO>(output);
-            Assert.Equal(expected.MonthlyPayment, output.MonthlyPayment);
-            Assert.Equal(expected.TotalInterest, output.TotalInterest);
-            Assert.Equal(expected.TotalPayment, output.TotalPayment);
+            Assert.Equal(expected, output);
         }
 
         [Fact]

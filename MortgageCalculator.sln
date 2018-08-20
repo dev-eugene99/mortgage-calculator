@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MortgageCalculator", "MortgageCalculator\MortgageCalculator.csproj", "{D07E8A0E-0F70-4011-A90E-0BD6CCB4417E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MortgageCalculator.Console", "MortgageCalculator\MortgageCalculator.Console.csproj", "{D07E8A0E-0F70-4011-A90E-0BD6CCB4417E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageCalculator.Tests", "MortgageCalculator.Tests\MortgageCalculator.Tests.csproj", "{A23EF680-2074-484C-9E28-84CA3FC94B77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MortgageCalculator.Tests", "MortgageCalculator.Tests\MortgageCalculator.Tests.csproj", "{A23EF680-2074-484C-9E28-84CA3FC94B77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MortgageCalculator.Core", "MortgageCalculator.Core\MortgageCalculator.Core.csproj", "{053B89E7-4324-418F-84E4-6FDC02B71780}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageCalculator.Func", "MortgageCalculator.Func\MortgageCalculator.Func.csproj", "{7FE1876A-EF7C-4BCB-8495-FF3DBE32A3F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E5A5DAAF-04A8-40B6-AA84-9F6BC92BB517}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +27,20 @@ Global
 		{A23EF680-2074-484C-9E28-84CA3FC94B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A23EF680-2074-484C-9E28-84CA3FC94B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A23EF680-2074-484C-9E28-84CA3FC94B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053B89E7-4324-418F-84E4-6FDC02B71780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053B89E7-4324-418F-84E4-6FDC02B71780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053B89E7-4324-418F-84E4-6FDC02B71780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053B89E7-4324-418F-84E4-6FDC02B71780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FE1876A-EF7C-4BCB-8495-FF3DBE32A3F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE1876A-EF7C-4BCB-8495-FF3DBE32A3F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE1876A-EF7C-4BCB-8495-FF3DBE32A3F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE1876A-EF7C-4BCB-8495-FF3DBE32A3F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A23EF680-2074-484C-9E28-84CA3FC94B77} = {E5A5DAAF-04A8-40B6-AA84-9F6BC92BB517}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DA3E6E8-76A0-467C-8859-D4F7BA5EE34B}

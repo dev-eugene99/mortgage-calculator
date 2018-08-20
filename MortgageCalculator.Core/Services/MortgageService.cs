@@ -1,17 +1,17 @@
-﻿using MortgageCalculator.Models;
+﻿using MortgageCalculator.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace MortgageCalculator.Services
+namespace MortgageCalculator.Core.Services
 {
     public class MortgageService
     {
         public string ProcessMortgageFile(string fileName)
         {
             StringBuilder inputSB = ReadFileIntoStringBuilder(fileName);
-            return CalculateMortgage(inputSB.ToString().Trim());
+            return CalculateMortgageFromString(inputSB.ToString().Trim());
         }
 
         public StringBuilder ReadFileIntoStringBuilder(string fileName)
@@ -28,10 +28,25 @@ namespace MortgageCalculator.Services
             return inputSB;
         }
 
-        public string CalculateMortgage(string unformattedInput)
+        public string CalculateMortgageFromString(string unformattedInput)
         {
             MortgageData data = ExtractMortgageData(unformattedInput);
-            MortgageSummaryDTO summary = PrepareDataForOutput(data);
+            return ReturnSummaryAsJSON(data);
+        }
+
+        public string CalculateMortgageFromData(decimal amount, float interest, decimal downPayment, int term)
+        {
+            var data = new MortgageData(amount, interest, downPayment, term);
+            return ReturnSummaryAsJSON(data);
+        }
+
+        private string ReturnSummaryAsJSON(MortgageData data)
+        {
+            var summary = new MortgageSummaryDTO(
+                data.MonthlyPayment,
+                data.TotalInterest,
+                data.TotalPayment
+                );
             return summary.toJSONString();
         }
 
@@ -39,7 +54,7 @@ namespace MortgageCalculator.Services
         {
             var words = unformattedInput.Split(' ', ':');
             List<string> wordsList = new List<string>();
-            foreach(var w in words)
+            foreach (var w in words)
             {
                 if (!string.IsNullOrEmpty(w))
                     wordsList.Add(w);
@@ -71,19 +86,8 @@ namespace MortgageCalculator.Services
                         throw new ArgumentException();
                 }
             }
-            
+
             return new MortgageData(amount, interest, downPayment, term);
-        }
-
-        public MortgageSummaryDTO PrepareDataForOutput(MortgageData data)
-        {            
-
-            var summary = new MortgageSummaryDTO(
-                data.MonthlyPayment,
-                data.TotalInterest,
-                data.TotalPayment
-                );
-            return summary;
         }
 
         private float ParsePercentage(string valueString)

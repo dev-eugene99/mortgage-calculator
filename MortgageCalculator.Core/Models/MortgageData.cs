@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MortgageCalculator.Models
+namespace MortgageCalculator.Core.Models
 {
     public class MortgageData
     {

@@ -1,4 +1,4 @@
-using MortgageCalculator.Models;
+using MortgageCalculator.Core.Models;
 using Xunit;
 
 namespace MortgageCalculator.Tests
