@@ -1,4 +1,4 @@
-# Mortgage Calculator
+# Mortgage Calculator [![Build Status](https://travis-ci.org/dev-eugene99/mortgage-calculator.svg?branch=master)](https://travis-ci.org/dev-eugene99/mortgage-calculator) 
 
 A simple console app that takes in a file with the following format:
 ```
