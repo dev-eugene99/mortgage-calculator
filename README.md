@@ -1,5 +1,6 @@
 # Mortgage Calculator [![Build Status](https://travis-ci.org/dev-eugene99/mortgage-calculator.svg?branch=master)](https://travis-ci.org/dev-eugene99/mortgage-calculator) 
 
+# MortgageCalculator.Console
 A simple console app that takes in a file with the following format:
 ```
 amount: 100000
@@ -21,6 +22,17 @@ it will return a JSON string as output in the console, such as:
     "total payment" 163522.8
 }
 ```
+# MortgageCalculator.Function
+an azure function app that takes in a POST Request with the following JSON data:
+```
+{
+    "amount": 100000,
+    "interest": 0.055,
+    "downpayment: 20000,
+    term: 30
+}
+```
+NOTE: percentage must be in decimal, amount and downpayment must be numerical, and term must be an interger.
 
 ## How to run:
 
