@@ -13,7 +13,7 @@ namespace MortgageCalculator.Func
     {
         private static readonly MortgageService _mortgageService = new MortgageService();
         [FunctionName("CalculateMortgage")]
-        public static IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]HttpRequest req, ILogger log)
+        public static IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
