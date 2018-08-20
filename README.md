@@ -22,7 +22,7 @@ it will return a JSON string as output in the console, such as:
     "total payment" 163522.8
 }
 ```
-# MortgageCalculator.Function
+# MortgageCalculator.Func
 an azure function app that takes in a POST Request with the following JSON data:
 ```
 {
