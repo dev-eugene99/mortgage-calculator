@@ -1,10 +1,16 @@
-﻿namespace MortgageCalculator.Core.Models
+﻿using Newtonsoft.Json;
+
+namespace MortgageCalculator.Core.Models
 {
     public class MortgageSummaryDTO
     {
+        [JsonProperty(PropertyName = "monthly payment")]
         public decimal MonthlyPayment { get; set; }
-        public decimal TotalPayment { get; set; }
+        [JsonProperty(PropertyName = "total interest")]
         public decimal TotalInterest { get; set; }
+        [JsonProperty(PropertyName = "total payment")]
+        public decimal TotalPayment { get; set; }
+
 
         public MortgageSummaryDTO(decimal monthlyPayment, decimal totalInterest, decimal totalPayment)
         {
@@ -15,7 +21,7 @@
 
         public string toJSONString()
         {
-            return $"{{ \"monthly payment\":{MonthlyPayment:0.##}, \"total interest\":{TotalInterest:0.##}, \"total payment\":{TotalPayment:0.##} }}";
+            return JsonConvert.SerializeObject(this).ToLower();
         }
     }
 }

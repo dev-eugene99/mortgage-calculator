@@ -98,7 +98,7 @@ namespace MortgageCalculator.Tests
             var interest = 0.055f;
             var downPayment = 20000m;
             var term = 30;
-            var expected = "{ \"monthly payment\":454.23, \"total interest\":83522.8, \"total payment\":163522.8 }";
+            var expected = "{\"monthly payment\":454.23,\"total interest\":83522.80,\"total payment\":163522.80}";
 
             var output = _mortgageService.CalculateMortgageFromData(amount, interest, downPayment, term);
 
@@ -110,7 +110,7 @@ namespace MortgageCalculator.Tests
         public void GenerateJSONMortgageFileFromValidFile()
         {
             var fileName = "loan1.txt";
-            var expected = "{ \"monthly payment\":454.23, \"total interest\":83522.8, \"total payment\":163522.8 }";
+            var expected = "{\"monthly payment\":454.23,\"total interest\":83522.80,\"total payment\":163522.80}";
             var output = _mortgageService.ProcessMortgageFile(fileName);
 
             Assert.Equal(expected, output);
