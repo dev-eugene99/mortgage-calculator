@@ -11,7 +11,8 @@ namespace MortgageCalculator.Core.Services
         public string ProcessMortgageFile(string fileName)
         {
             StringBuilder inputSB = ReadFileIntoStringBuilder(fileName);
-            return CalculateMortgageFromString(inputSB.ToString().Trim());
+            var mortgageData = CalculateMortgageFromString(inputSB.ToString().Trim());
+            return mortgageData.toJSONString();
         }
 
         public StringBuilder ReadFileIntoStringBuilder(string fileName)
@@ -28,26 +29,14 @@ namespace MortgageCalculator.Core.Services
             return inputSB;
         }
 
-        public string CalculateMortgageFromString(string unformattedInput)
+        public MortgageData CalculateMortgageFromString(string unformattedInput)
         {
-            MortgageData data = ExtractMortgageData(unformattedInput);
-            return ReturnSummaryAsJSON(data);
+            return ExtractMortgageData(unformattedInput);
         }
 
-        public string CalculateMortgageFromData(decimal amount, float interest, decimal downPayment, int term)
+        public MortgageData CalculateMortgageFromData(decimal amount, float interest, decimal downPayment, int term)
         {
-            var data = new MortgageData(amount, interest, downPayment, term);
-            return ReturnSummaryAsJSON(data);
-        }
-
-        private string ReturnSummaryAsJSON(MortgageData data)
-        {
-            var summary = new MortgageSummaryDTO(
-                data.MonthlyPayment,
-                data.TotalInterest,
-                data.TotalPayment
-                );
-            return summary.toJSONString();
+            return new MortgageData(amount, interest, downPayment, term);
         }
 
         public MortgageData ExtractMortgageData(string unformattedInput)

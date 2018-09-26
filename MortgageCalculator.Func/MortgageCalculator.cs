@@ -24,10 +24,10 @@ namespace MortgageCalculator.Func
             decimal downpayment = data?.downpayment ?? 0; ;
             int term = data?.downpayment ?? 0;
 
-            var JSON = _mortgageService.CalculateMortgageFromData(amount, interest, downpayment, term);
+            var mortgageData = _mortgageService.CalculateMortgageFromData(amount, interest, downpayment, term);
 
-            return JSON != null 
-                ? (ActionResult)new OkObjectResult(JSON)
+            return mortgageData != null 
+                ? (ActionResult)new OkObjectResult(mortgageData.toJSONString())
                 : new BadRequestObjectResult("");
         }
     }

@@ -48,5 +48,20 @@ namespace MortgageCalculator.Core.Models
             Term = term;
             _monthlyPayment = 0;
         }
+
+        public MortgageSummaryDTO toSummary()
+        {
+            return new MortgageSummaryDTO(
+                MonthlyPayment,
+                TotalInterest,
+                TotalPayment
+            );
+        }
+
+        public string toJSONString()
+        {
+            var summary = this.toSummary();
+            return summary.toJSONString();
+        }
     }
 }

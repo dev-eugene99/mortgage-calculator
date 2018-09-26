@@ -102,7 +102,7 @@ namespace MortgageCalculator.Tests
 
             var output = _mortgageService.CalculateMortgageFromData(amount, interest, downPayment, term);
 
-            Assert.Equal(expected, output);
+            Assert.Equal(expected, output.toJSONString());
         }
 
         [Fact]
